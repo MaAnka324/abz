@@ -1,0 +1,21 @@
+.usersBlock {
+    background-color: darkseagreen;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.block {
+    background-color: #282c34;
+    width: 370px;
+    height: 254px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.photo {
+    width: 100px;
+}
