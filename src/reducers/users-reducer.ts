@@ -13,15 +13,14 @@ export type UserType = {
     photo: string
 }
 
-
 let initialState: InitialStateType = {
     "success": true,
     "page": 1,
     "total_pages": 10,
     "total_users": 47,
-    "count": 5,
+    "count": 6,
     "links": {
-        "next_url": "https://frontend-test-assignment-api.abz.agency/api/v1/users?page=2&count=5",
+        "next_url": "https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6",
         "prev_url": null
     },
     users: [
@@ -55,11 +54,8 @@ export const setUsers = (users: Array<UserType>) => (
     {type: "SET-USERS", users} as const
 )
 
-export const addUsers = (user: UserType) => (
-    {type: "ADD-USERS", user} as const
-)
+export type UsersActionsTypes = ReturnType<typeof setUsers>
 
-export type UsersActionsTypes = ReturnType<typeof setUsers> | ReturnType<typeof addUsers>
 
 const usersReducer = (state: InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
     switch (action.type) {
@@ -68,11 +64,6 @@ const usersReducer = (state: InitialStateType = initialState, action: UsersActio
                 ...state,
                 users: action.users
             }
-        case "ADD-USERS":
-            return {
-                ...state,
-                users: [action.user, ...state.users]
-            }
         default:
             return state
     }
@@ -80,9 +71,9 @@ const usersReducer = (state: InitialStateType = initialState, action: UsersActio
 
 export default usersReducer
 
-export const getUsersTC = (): AppThunk => async dispatch => {
+export const getUsersTC = (nextUrl: string): AppThunk => async dispatch => {
     try {
-        const res = await usersAPI.getUsers()
+        const res = await usersAPI.getUsers(nextUrl)
         dispatch(setUsers(res.data.users))
     } catch (e) {
         console.log(e)
@@ -93,9 +84,8 @@ export const getUsersTC = (): AppThunk => async dispatch => {
 export const addUsersTC = (data:FormType): AppThunk => async dispatch => {
     try {
         const res = await usersAPI.addUser(data);
-        const res2 = await usersAPI.getUsers()
-        const newUser = res2.data.users[0]
-        dispatch(addUsers(newUser));
+        const baseUrl = "https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6"
+        dispatch(getUsersTC(baseUrl))
     } catch (e) {
         console.log(e)
         throw new Error()

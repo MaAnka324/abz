@@ -18,7 +18,7 @@ export type ResponseType<D = {}> = {
 
 const getNewToken = async () => {
     try {
-        const response = await axios.get<{ token: string }>('https://frontend-test-assignment-api.abz.agency/api/v1/token');
+        const response = await instance.get<{ token: string }>('token');
 
         const newToken = response.data.token;
         console.log('New Token:', newToken);
@@ -31,13 +31,12 @@ const getNewToken = async () => {
 };
 
 export const usersAPI = {
-    async getUsers() {
-        return instance.get<InitialStateType>('users');
+    async getUsers(newUrl: string) {
+        return axios.get<InitialStateType>(newUrl);
     },
     async addUser(data: FormType) {
         try {
             const token = await getNewToken();
-
             const instanceWithToken = axios.create({
                 baseURL,
                 headers: {
@@ -45,9 +44,7 @@ export const usersAPI = {
                     'Content-Type': 'multipart/form-data',
                 }
             });
-
             const response = await instanceWithToken.post<ResponseType<FormType >>('users', data);
-
             return response.data;
         } catch (error) {
             console.error('Error adding user:', error);
