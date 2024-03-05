@@ -7,6 +7,7 @@ import s from "./User.module.css"
 const Users = () => {
     const dispatch = useAppDispatch();
     const users = useAppSelector(state => state.users);
+    const total_users = useAppSelector(state => state.users.total_users);
     const [count, setCount] = useState(6);
 
     useEffect(() => {
@@ -17,6 +18,9 @@ const Users = () => {
     const handleNextUsersList = () => {
         setCount(prevCount => prevCount + 6);
     };
+
+    const disable = count >= total_users
+    debugger
 
     return (
         <div>
@@ -32,7 +36,7 @@ const Users = () => {
                     />
                 ))}
             </div>
-            <button onClick={handleNextUsersList}>SHOW MORE</button>
+            <button onClick={handleNextUsersList} disabled={disable}>SHOW MORE</button>
         </div>
     );
 };

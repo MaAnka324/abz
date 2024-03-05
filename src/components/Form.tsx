@@ -137,10 +137,10 @@ export const Form = () => {
                                 defaultValue="1"
                                 {...formik.getFieldProps('position_id')}
                             >
-                                <FormControlLabel value="1" control={<Radio/>} label="Frontend developer"/>
-                                <FormControlLabel value="2" control={<Radio/>} label="Backend developer"/>
-                                <FormControlLabel value="3" control={<Radio/>} label="Designer"/>
-                                <FormControlLabel value="4" control={<Radio/>} label="QA"/>
+                                <FormControlLabel value="1" control={<Radio/>} label="Security"/>
+                                <FormControlLabel value="2" control={<Radio/>} label="Designer"/>
+                                <FormControlLabel value="3" control={<Radio/>} label="Content manager"/>
+                                <FormControlLabel value="4" control={<Radio/>} label="Lawyer"/>
                             </RadioGroup>
                         </FormControl>
                         {formik.touched.position_id && formik.errors.position_id &&
