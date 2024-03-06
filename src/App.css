@@ -1,8 +1,9 @@
 .App {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  background-color: #F8F8F8;
 }
 
 .App-logo {

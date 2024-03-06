@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from "../../src/store/store";
 import {getUsersTC} from "../../src/reducers/users-reducer";
 import User from "../../src/components/User";
 import s from "./User.module.css"
+import {Button} from "@mui/material";
 
 const Users = () => {
     const dispatch = useAppDispatch();
@@ -23,7 +24,8 @@ const Users = () => {
     debugger
 
     return (
-        <div id="usersSection">
+        <div className={s.usersComponent} id="usersSection">
+            <h1>Working with GET request</h1>
             <div className={s.usersBlock}>
                 {users.users.map(u => (
                     <User
@@ -36,7 +38,7 @@ const Users = () => {
                     />
                 ))}
             </div>
-            <button onClick={handleNextUsersList} disabled={disable}>SHOW MORE</button>
+            <Button className={s.button} onClick={handleNextUsersList} variant={'contained'} disabled={disable}>SHOW MORE</Button>
         </div>
     );
 };

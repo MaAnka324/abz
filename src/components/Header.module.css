@@ -1,13 +1,25 @@
 
 .header {
-    background-color: lightpink;
-    width: 1170px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.headersComponents {
+    background-color: #FFFFFF;
     height: 60px;
+    width: 1170px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
+
+/*.img {*/
+/*    padding-left: 30px;*/
+/*}*/
 
 .buttons {
     width: 210px;

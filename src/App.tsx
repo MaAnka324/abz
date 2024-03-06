@@ -7,12 +7,12 @@ import Users from "./components/Users";
 
 function App() {
     return (
-        <div className="App">
-          <Header/>
-          <Main/>
-          <Users/>
-          <Form/>
-        </div>
+            <div className="App">
+                <Header/>
+                <Main/>
+                <Users/>
+                <Form/>
+            </div>
     );
 }
 

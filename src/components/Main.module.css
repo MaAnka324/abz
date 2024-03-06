@@ -1,0 +1,57 @@
+
+.main {
+    margin-bottom: 140px;
+}
+
+.main img {
+    width: 1170px;
+    height: auto;
+}
+
+
+
+.overlayText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -37%);
+    color: white;
+    font-size: 24px;
+    /*font-weight: bold;*/
+    z-index: 1;
+    width: 380px;
+    height: 323px;
+
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+}
+
+.overlayText > h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.overlayText > p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.button {
+    background-color: #F4E041 !important;
+    width: 100px;
+    height: 34px;
+    border-radius: 80px !important;
+    color: black !important;
+}
+
+.button:hover {
+    background-color: #FFE302 !important;
+}

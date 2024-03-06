@@ -1,21 +1,66 @@
+
+.usersComponent {
+    background-color: #61dafb;
+    width: 1168px;
+    min-height: 711px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .usersBlock {
     background-color: darkseagreen;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
+    min-height: 537px;
 }
 
+h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0;
+    text-align: center;
+    margin:  0 0 50px 0;
+}
+
+
 .block {
-    background-color: #282c34;
+    background-color: white;
+    border-radius: 10px;
     width: 370px;
     height: 254px;
-    margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    margin-bottom: 29px;
+    /*padding: 10px;*/
 }
 
 .photo {
-    width: 100px;
+    width: 70px;
+    border-radius: 70px;
+}
+
+.button {
+    background-color: #F4E041 !important;
+    width: 120px;
+    height: 34px;
+    border-radius: 80px !important;
+    color: black !important;
+    font-size: 13px !important;
+    line-height: 26px;
+}
+
+.button:hover {
+    background-color: #FFE302 !important;
+}
+
+.button:disabled {
+    background-color: #B4B4B4 !important;
 }

@@ -96,7 +96,6 @@ export const Form = () => {
         },
         onSubmit: values => {
             console.log(values)
-            debugger
             // formik.resetForm()
             dispatch(addUsersTC(values))
         },
