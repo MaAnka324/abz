@@ -23,7 +23,7 @@ const Users = () => {
     debugger
 
     return (
-        <div>
+        <div id="usersSection">
             <div className={s.usersBlock}>
                 {users.users.map(u => (
                     <User

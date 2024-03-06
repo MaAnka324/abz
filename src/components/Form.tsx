@@ -102,7 +102,7 @@ export const Form = () => {
         },
     })
 
-    return <Grid container justifyContent={'center'}>
+    return <Grid container justifyContent={'center'} id='signUpSection'>
         <Grid item justifyContent={'center'}>
             <FormControl>
                 <form onSubmit={formik.handleSubmit}>

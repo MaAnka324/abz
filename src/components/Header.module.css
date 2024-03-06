@@ -1,0 +1,30 @@
+
+.header {
+    background-color: lightpink;
+    width: 1170px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons {
+    width: 210px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.button {
+    background-color: #F4E041 !important;
+    width: 100px;
+    height: 34px;
+    border-radius: 80px !important;
+    color: black !important;
+}
+
+.button:hover {
+    background-color: #FFE302 !important;
+}
