@@ -14,6 +14,8 @@ import {
 import {useAppDispatch} from "../../src/store/store";
 import {addUsersTC} from "../../src/reducers/users-reducer";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import s from './FormComponent.module.css'
+import UploadIcon from '@mui/icons-material/Upload';
 import defaultAva from './flowers.jpg'
 
 
@@ -92,12 +94,15 @@ export const Form = () => {
             if (!values.position_id) {
                 errors.position_id = 'Required'
             }
+            if (!values.photo) {
+                errors.photo = 'Required'
+            }
             return errors
         },
         onSubmit: values => {
             console.log(values)
-            // formik.resetForm()
             dispatch(addUsersTC(values))
+            formik.resetForm()
         },
     })
 
@@ -105,10 +110,11 @@ export const Form = () => {
         <Grid item justifyContent={'center'}>
             <FormControl>
                 <form onSubmit={formik.handleSubmit}>
-                    <FormGroup>
+                    <FormGroup className={s.formGroup}>
 
-                        <TextField label="Name"
+                        <TextField label="Your name"
                                    margin="normal"
+                                   className={s.input}
                                    {...formik.getFieldProps('name')}
                         />
                         {formik.touched.name && formik.errors.name &&
@@ -116,6 +122,7 @@ export const Form = () => {
 
                         <TextField label="Email"
                                    margin="normal"
+                                   className={s.input}
                                    {...formik.getFieldProps('email')}
                         />
                         {formik.touched.email && formik.errors.email &&
@@ -123,14 +130,16 @@ export const Form = () => {
 
                         <TextField label="Phone"
                                    margin="normal"
+                                   className={s.input}
                                    helperText='+38 (XXX) XXX-XX-XX'
                                    {...formik.getFieldProps('phone')}
                         />
                         {formik.touched.phone && formik.errors.phone &&
                             <div style={{color: 'red'}}>{formik.errors.phone}</div>}
 
-                        <FormControl>
-                            <FormLabel id="demo-radio-buttons-group-label">Select your position</FormLabel>
+                        <FormControl className={s.selectsGroup}>
+                            <FormLabel className={s.selectText} id="demo-radio-buttons-group-label">Select your
+                                position</FormLabel>
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
                                 defaultValue="1"
@@ -145,29 +154,51 @@ export const Form = () => {
                         {formik.touched.position_id && formik.errors.position_id &&
                             <div style={{color: 'red'}}>{formik.errors.position_id}</div>}
 
-                        <div>
-                            {/*<img*/}
-                            {/*    src={ava || defaultAva}*/}
-                            {/*    style={{width: '100px'}}*/}
-                            {/*    alt="ava"*/}
-                            {/*/>*/}
+
+                        {/*<label>*/}
+                        {/*    <TextField label="photo"*/}
+                        {/*               margin="normal"*/}
+                        {/*               type="file"*/}
+                        {/*               style={{display: 'none'}}*/}
+                        {/*    />*/}
+                        {/*    <Button component="span" variant={'outlined'} startIcon={<UploadIcon />}>*/}
+                        {/*        ADD PHOTO*/}
+                        {/*    </Button>*/}
+                        {/*</label>*/}
+
+
+                        <div className={s.inputPhoto}>
                             <label>
                                 <input type="file"
                                        name='photo'
                                        onChange={uploadHandler}
                                        style={{display: 'none'}}
                                 />
-                                <IconButton component="span">
+
+                                <Button className={s.addPhotoButton} component="span" variant={'outlined'} startIcon={<UploadIcon/>}>
                                     ADD PHOTO
-                                    <CloudUploadIcon/>
-                                </IconButton>
+                                </Button>
+                                {/*<IconButton component="span">*/}
+                                {/*    ADD PHOTO*/}
+                                {/*    <CloudUploadIcon/>*/}
+                                {/*</IconButton>*/}
                             </label>
                             <p>{formik.values.photo ? 'Photo added ✅' : ''}</p>
                         </div>
+                        {formik.touched.photo && formik.errors.photo &&
+                            <div style={{color: 'red'}}>{formik.errors.photo}</div>}
 
-                        <Button type={'submit'} variant={'contained'} color={'primary'}>
-                            SIGN UP
-                        </Button>
+                        <div className={s.buttonDiv}>
+                            <Button type={'submit'}
+                                    className={s.buttonSubmit}
+                                    variant={'contained'}
+                                    color={'primary'}
+                                    disabled={Object.keys(formik.errors).length > 0 || !formik.dirty || !formik.isValid}
+                            >
+                                SIGN UP
+                            </Button>
+                        </div>
+
                     </FormGroup>
                 </form>
             </FormControl>
@@ -177,17 +208,6 @@ export const Form = () => {
 
 
 export default Form;
-
-
-
-
-
-
-
-
-
-
-
 
 
 // <div>

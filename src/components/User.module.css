@@ -1,6 +1,6 @@
 
 .usersComponent {
-    background-color: #61dafb;
+    /*background-color: #61dafb;*/
     width: 1168px;
     min-height: 711px;
     margin: 0 auto;
@@ -11,7 +11,7 @@
 }
 
 .usersBlock {
-    background-color: darkseagreen;
+    /*background-color: darkseagreen;*/
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,18 +33,49 @@ h1 {
 .block {
     background-color: white;
     border-radius: 10px;
-    width: 370px;
-    height: 254px;
+    width: 330px;
+    height: 214px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-bottom: 29px;
-    /*padding: 10px;*/
+    padding: 20px;
+
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0;
+    text-align: center;
 }
 
 .photo {
     width: 70px;
     border-radius: 70px;
+}
+
+.email {
+    text-decoration: none;
+    color: black;
+}
+
+/*.imgUser {*/
+/*    background-color: #61dafb;*/
+/*}*/
+
+/*.nameUser {*/
+/*    background-color: lightpink;*/
+/*}*/
+
+/*.infoUser {*/
+/*    background-color: darkseagreen;*/
+/*}*/
+
+.buttonBlock {
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
 }
 
 .button {
@@ -63,4 +94,16 @@ h1 {
 
 .button:disabled {
     background-color: #B4B4B4 !important;
+    color: white !important;
 }
+
+
+
+
+
+
+
+
+
+
+

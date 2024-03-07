@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import Header from "./components/Header";
 import Main from "./components/Main";
-import Form from "./components/Form";
 import Users from "./components/Users";
+import FormComponent from "./components/FormComponent";
 
 function App() {
     return (
@@ -11,7 +11,7 @@ function App() {
                 <Header/>
                 <Main/>
                 <Users/>
-                <Form/>
+                <FormComponent/>
             </div>
     );
 }

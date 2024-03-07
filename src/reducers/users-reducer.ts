@@ -107,7 +107,6 @@ export default usersReducer
 export const getUsersTC = (nextUrl: string): AppThunk => async dispatch => {
     try {
         const res = await usersAPI.getUsers(nextUrl)
-        debugger
         dispatch(setUsers(res.data.users))
         dispatch(setTotalUsersCount(res.data.total_users))
     } catch (e) {

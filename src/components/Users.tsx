@@ -21,7 +21,6 @@ const Users = () => {
     };
 
     const disable = count >= total_users
-    debugger
 
     return (
         <div className={s.usersComponent} id="usersSection">
@@ -38,7 +37,10 @@ const Users = () => {
                     />
                 ))}
             </div>
-            <Button className={s.button} onClick={handleNextUsersList} variant={'contained'} disabled={disable}>SHOW MORE</Button>
+            <div className={s.buttonBlock}>
+                <Button className={s.button} onClick={handleNextUsersList} variant={'contained'} disabled={disable}>SHOW
+                    MORE</Button>
+            </div>
         </div>
     );
 };
