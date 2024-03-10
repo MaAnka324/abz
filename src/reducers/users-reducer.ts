@@ -15,7 +15,8 @@ export type UserType = {
 
 
 let initialState: InitialStateType = {
-    "success": true,
+    "preloader": false,
+    "success": false,
     "page": 1,
     "total_pages": 10,
     "total_users": 47,
@@ -39,6 +40,7 @@ let initialState: InitialStateType = {
 }
 
 export type InitialStateType = {
+    preloader: boolean
     success: boolean
     page: number
     total_pages: number
@@ -67,10 +69,20 @@ export const setNextUrl = (nextUrl: string) => (
     {type: "SET-NEXT-URL", nextUrl} as const
 )
 
+export const setSuccess = (success: boolean) => (
+    {type: "SET-SUCCESS", success} as const
+)
+
+export const setPreloader= (preloader: boolean) => (
+    {type: "SET-PRELOADER", preloader} as const
+)
+
 export type UsersActionsTypes = ReturnType<typeof setUsers>
     | ReturnType<typeof addUsers>
     | ReturnType<typeof setNextUrl>
     | ReturnType<typeof setTotalUsersCount>
+    | ReturnType<typeof setSuccess>
+    | ReturnType<typeof setPreloader>
 
 const usersReducer = (state: InitialStateType = initialState, action: UsersActionsTypes): InitialStateType => {
     switch (action.type) {
@@ -84,18 +96,20 @@ const usersReducer = (state: InitialStateType = initialState, action: UsersActio
                 ...state,
                 total_users: action.totalUsers
             }
+        case "SET-SUCCESS":
+            return {
+                ...state,
+                success: action.success
+            }
+        case "SET-PRELOADER":
+            return {
+                ...state,
+                preloader: action.preloader
+            }
         // case "ADD-USERS":
         //     return {
         //         ...state,
         //         users: [action.user, ...state.users]
-        //     }
-        // case "SET-NEXT-URL":
-        //     return {
-        //         ...state,
-        //         links: {
-        //             ...state.links,
-        //             next_url: action.nextUrl
-        //         }
         //     }
         default:
             return state
@@ -116,12 +130,17 @@ export const getUsersTC = (nextUrl: string): AppThunk => async dispatch => {
 }
 
 export const addUsersTC = (data:FormType): AppThunk => async dispatch => {
+    dispatch(setPreloader(true))
     try {
         const res = await usersAPI.addUser(data);
         const baseUrl = "https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6"
         dispatch(getUsersTC(baseUrl))
+        dispatch(setSuccess(true))
     } catch (e) {
         console.log(e)
         throw new Error()
+    }
+    finally {
+        dispatch(setPreloader(false))
     }
 }

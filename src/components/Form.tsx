@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import {useFormik} from "formik";
 import {
-    Button,
+    Button, CircularProgress,
     FormControl,
     FormControlLabel,
     FormGroup,
@@ -11,7 +11,7 @@ import {
     TextField
 } from "@mui/material";
 
-import {useAppDispatch} from "../../src/store/store";
+import {useAppDispatch, useAppSelector} from "../../src/store/store";
 import {addUsersTC} from "../../src/reducers/users-reducer";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import s from './FormComponent.module.css'
@@ -37,6 +37,7 @@ export type FormType = {
 
 export const Form = () => {
     const dispatch = useAppDispatch()
+    const preloader = useAppSelector(state => state.users.preloader);
 
     const [ava, setAva] = useState(null)
 
@@ -113,6 +114,7 @@ export const Form = () => {
                     <FormGroup className={s.formGroup}>
 
                         <TextField label="Your name"
+                                   error={!!(formik.touched.name && formik.errors.name)}
                                    margin="normal"
                                    className={s.input}
                                    {...formik.getFieldProps('name')}
@@ -121,6 +123,7 @@ export const Form = () => {
                             <div style={{color: 'red'}}>{formik.errors.name}</div>}
 
                         <TextField label="Email"
+                                   error={!!(formik.touched.email && formik.errors.email)}
                                    margin="normal"
                                    className={s.input}
                                    {...formik.getFieldProps('email')}
@@ -129,6 +132,7 @@ export const Form = () => {
                             <div style={{color: 'red'}}>{formik.errors.email}</div>}
 
                         <TextField label="Phone"
+                                   error={!!(formik.touched.phone && formik.errors.phone)}
                                    margin="normal"
                                    className={s.input}
                                    helperText='+38 (XXX) XXX-XX-XX'
@@ -187,6 +191,10 @@ export const Form = () => {
                         </div>
                         {formik.touched.photo && formik.errors.photo &&
                             <div style={{color: 'red'}}>{formik.errors.photo}</div>}
+
+                        <div>
+                            {preloader && <CircularProgress />}
+                        </div>
 
                         <div className={s.buttonDiv}>
                             <Button type={'submit'}
